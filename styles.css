@@ -1,0 +1,252 @@
+:root {
+  --bg: #0f1117;
+  --panel: #151922;
+  --text: #e6e6e6;
+  --muted: #a8b3cf;
+  --accent: #4f8cff;
+  --accent-2: #23c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --border: #222738;
+  --chip: #1b2130;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --radius: 12px;
+  --transition: 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all var(--transition);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font: 16px/1.6 'Segoe UI', Roboto, system-ui, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #0d1016 0%, #0f1117 100%);
+}
+
+.app-header, .app-footer {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0;
+  color: var(--accent);
+}
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .app {
+    grid-template-columns: 1.2fr 1fr;
+  }
+  .guess-panel { grid-column: 1; }
+  .hint-panel { grid-column: 2; }
+}
+
+.status-bar {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+
+.status-item {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.hint-panel, .guess-panel, .answer-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.hints {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hints li {
+  background: var(--chip);
+  border: 1px dashed #2a3246;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.hint-actions {
+  margin-top: 14px;
+}
+
+.guess-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: #0e1320;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.guess-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.3);
+}
+
+.guess-panel form {
+  display: flex;
+  gap: 10px;
+}
+
+.primary, .secondary, .danger {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background var(--transition);
+}
+
+.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.primary:hover {
+  background: #3a6fd9;
+}
+
+.secondary {
+  background: #161b26;
+  color: #c6d0e9;
+  border-color: #2a3246;
+}
+
+.secondary:hover {
+  background: #1f2432;
+}
+
+.danger {
+  background: #1c0f12;
+  color: #ffb4b4;
+  border-color: #49212a;
+}
+
+.danger:hover {
+  background: #2a1218;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.guesses {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guess {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--chip);
+  border: 1px solid #2a3246;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.guess .text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #2a3246;
+  background: #131828;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.badge.good {
+  background: rgba(35, 197, 94, 0.15);
+  color: #b7f7cc;
+  border-color: #1b6c3a;
+}
+
+.badge.ok {
+  background: rgba(245, 158, 11, 0.15);
+  color: #ffe3b0;
+  border-color: #7a5a1a;
+}
+
+.badge.bad {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ffc7c7;
+  border-color: #6b1c1c;
+}
+
+.answer-panel.hidden {
+  display: none;
+}
+
+.answer-details {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.mode-toggle label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}

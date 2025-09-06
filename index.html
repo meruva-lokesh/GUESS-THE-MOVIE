@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Guess the Telugu Movie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Guess the Telugu Movie</h1>
+    <div class="mode-toggle">
+      <label>
+        <input type="checkbox" id="dailyModeToggle" />
+        Daily Mode
+      </label>
+    </div>
+  </header>
+
+  <main class="app">
+    
+    <section class="status-bar">
+      <div class="status-item">
+        <strong>Streak:</strong> <span id="streak">0</span>
+      </div>
+      <div class="status-item">
+        <strong>Wins:</strong> <span id="wins">0</span>
+      </div>
+      <div class="status-item">
+        <strong>Losses:</strong> <span id="losses">0</span>
+      </div>
+      <div class="status-item">
+        <strong>Guesses Left:</strong> <span id="guessesLeft">6</span>
+      </div>
+    </section>
+    <section id="answerPanel" class="answer-panel hidden" aria-live="polite">
+      <h2>Answer</h2>
+      <p id="answerText"></p>
+      <div id="answerDetails" class="answer-details"></div>
+    </section>
+    <section class="hint-panel" aria-live="polite" aria-atomic="true">
+      <h2>Hints</h2>
+      <ul id="hints" class="hints">
+        <!-- Hints are injected here -->
+      </ul>
+      <div class="hint-actions">
+        <button id="revealHintBtn" class="secondary">Reveal Next Hint</button>
+      </div>
+    </section>
+    
+    <section class="guess-panel">
+      <form id="guessForm" autocomplete="off">
+        <label for="guessInput" class="visually-hidden">Enter movie title</label>
+        <input
+          id="guessInput"
+          class="guess-input"
+          type="text"
+          placeholder="Type a Telugu movie title..."
+          list="titles"
+          required
+          autofocus
+        />
+        <datalist id="titles">
+          <!-- Populated from dataset -->
+        </datalist>
+        <button type="submit" class="primary">Guess</button>
+      </form>
+
+      <ul id="guesses" class="guesses" aria-live="polite" aria-atomic="false">
+        <!-- Guess results appear here -->
+      </ul>
+    </section>
+
+    <section class="actions">
+      <button id="newGameBtn" class="secondary">New Random</button>
+      <button id="shareBtn" class="secondary">Share Result</button>
+      <button id="giveUpBtn" class="danger">Give Up</button>
+    </section>
+
+    
+  </main>
+
+  <footer class="app-footer">
+    <small>Tip: Use the “Reveal Next Hint” button if you’re stuck. Daily Mode gives everyone the same movie each day.</small>
+  </footer>
+
+  <script src="movies.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
